@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaseMarketing Digital – Agence de génération de leads</title>
+  <!-- Google Fonts + Font Awesome (pour les icônes pro) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fbfdff;
+      color: #0a0b1e;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* HEADER avec vrai logo */
+    header {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(145deg, #1E3A8A, #3B82F6);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px -6px rgba(59,130,246,0.3);
+      transition: 0.2s;
+    }
+
+    .logo-icon i {
+      font-size: 24px;
+      color: white;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0F172A, #2563EB);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .btn-outline-light {
+      border: 1.5px solid #cbd5e1;
+      background: white;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-outline-light:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    /* BOUTONS GRADIENT */
+    .btn-primary {
+      background: linear-gradient(95deg, #1E3A8A, #3B82F6);
+      color: white;
+      padding: 12px 32px;
+      border-radius: 44px;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: scale(0.97);
+      box-shadow: 0 6px 18px rgba(37,99,235,0.4);
+      background: linear-gradient(95deg, #1E40AF, #2563EB);
+    }
+
+    .btn-large {
+      padding: 14px 40px;
+      font-size: 1.1rem;
+    }
+
+    /* HERO section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(145deg, #0B1120, #1E3A8A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #334155;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+
+    /* services SECTION */
+    .services-section {
+      padding: 80px 0;
+      background: #F8FAFE;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 52px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title span {
+      background: linear-gradient(120deg, #1E3A8A, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .card-modern {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 28px;
+      transition: all 0.25s ease;
+      border: 1px solid #eef2ff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .card-modern:hover {
+      transform: translateY(-8px);
+      border-color: #cbdffc;
+      box-shadow: 0 24px 36px -16px rgba(0,0,0,0.12);
+    }
+
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 24px;
+    }
+
+    .card-modern h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .card-modern p {
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* lead form */
+    .lead-section {
+      padding: 80px 0;
+      background: linear-gradient(125deg, #F1F5F9, #ffffff);
+      text-align: center;
+    }
+
+    .form-premium {
+      max-width: 520px;
+      margin: 40px auto 0;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .form-premium input {
+      flex: 1;
+      padding: 14px 22px;
+      border-radius: 60px;
+      border: 1px solid #cbd5e1;
+      font-size: 1rem;
+      background: white;
+      transition: 0.2s;
+    }
+
+    .form-premium input:focus {
+      outline: none;
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+
+    /* stripe block */
+    .stripe-block {
+      background: #0B1120;
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+      border-radius: 0;
+    }
+
+    .stripe-block h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .stripe-block p {
+      color: #cbd5e1;
+      margin: 16px 0 32px;
+    }
+
+    .btn-stripe {
+      background: white;
+      color: #0B1120;
+      padding: 14px 42px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-stripe:hover {
+      background: #f1f5f9;
+      transform: scale(0.97);
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .message-status {
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 750px) {
+      .hero h1 { font-size: 2.2rem; }
+      .header-inner { flex-direction: column; gap: 16px; }
+      .nav-links { gap: 24px; }
+      .container { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span class="logo-text">BaseMarketing Digital</span>
+    </a>
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#lead">Ressources</a>
+      <button class="btn-outline-light" onclick="alert('📩 Contact : hello@basemarketing.io')">Contact</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <div class="container hero">
+    <h1>Générez des leads B2B <br>sans exploser votre budget</h1>
+    <p>Stratégies digitales actionnables pour TPE, freelances et e‑commerce. Passez de 0 à 10k€/mois avec notre méthode éprouvée.</p>
+    <a href="#lead" class="btn-primary btn-large">🚀 Démarrer maintenant</a>
+  </div>
+
+  <!-- Services -->
+  <div id="services" class="services-section">
+    <div class="container">
+      <h2 class="section-title">Ce que <span>nous construisons</span> pour vous</h2>
+      <div class="cards-grid">
+        <div class="card-modern"><div class="card-icon">📈</div><h3>Audit gratuit</h3><p>Analyse de votre tunnel de conversion, identification des fuites de leads.</p></div>
+        <div class="card-modern"><div class="card-icon">🧲</div><h3>Lead magnets</h3><p>Création d’aimants à prospects qui capturent des emails automatiquement.</p></div>
+        <div class="card-modern"><div class="card-icon">🤖</div><h3>Automatisation</h3><p>Séquence emails + relances + webhooks, votre business tourne sans vous.</p></div>
+        <div class="card-modern"><div class="card-icon">💰</div><h3>Scaling 10k → 100k</h3><p>On multiplie vos revenus sans multiplier votre charge de travail.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead Magnet + Formulaire réel (Formspree) -->
+  <div id="lead" class="lead-section">
+    <div class="container">
+      <h2 class="section-title">📕 Recevez le guide « 10 stratégies pour 10k€/mois »</h2>
+      <p>Gratuit, sans spam. Téléchargement immédiat par email.</p>
+      <form id="lead-form" class="form-premium">
+        <input type="email" id="lead-email" placeholder="votre@email.com" required>
+        <button type="submit" class="btn-primary">Obtenir le guide →</button>
+      </form>
+      <div id="form-feedback" class="message-status"></div>
+    </div>
+  </div>
+
+  <!-- Offre Stripe (abonnement) -->
+  <div class="stripe-block">
+    <div class="container">
+      <h2>🔥 Pack Growth Mensuel</h2>
+      <p>Accès illimité aux templates, audits mensuels + communauté privée.</p>
+      <button id="stripe-button" class="btn-stripe">💳 S'abonner – 97€/mois</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 BaseMarketing Digital — contact@basemarketing.io — Tous droits réservés</p>
+  </div>
+</footer>
+
+<script>
+  // ========================
+  // 1. FORMULAIRE REEL (FORMSPREE)
+  // ========================
+  // 🔧 REMPLACEZ "votre_id_formspree" par votre ID Formspree (ex: xeqkzvra)
+  const FORMSPREE_ID = "votre_id_formspree";   // <--- À MODIFIER ICI
+  const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+  const leadForm = document.getElementById('lead-form');
+  const feedback = document.getElementById('form-feedback');
+
+  if (leadForm) {
+    leadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('lead-email').value;
+      feedback.innerHTML = "⏳ Envoi en cours...";
+      feedback.style.color = "#2563eb";
+      try {
+        const response = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: "guide_10k" })
+        });
+        if (response.ok) {
+          feedback.innerHTML = "✅ Guide envoyé ! Vérifiez votre boîte mail (et vos spams).";
+          feedback.style.color = "#16a34a";
+          leadForm.reset();
+        } else {
+          feedback.innerHTML = "❌ Erreur temporaire, contactez-nous directement à hello@basemarketing.io";
+          feedback.style.color = "#dc2626";
+        }
+      } catch (err) {
+        feedback.innerHTML = "❌ Problème réseau. Rafraîchissez la page ou réessayez plus tard.";
+        feedback.style.color = "#dc2626";
+      }
+    });
+  }
+
+  // ========================
+  // 2. STRIPE (LIEN DE PAIEMENT)
+  // ========================
+  // 🔧 REMPLACEZ par votre lien de paiement Stripe généré dans le dashboard
+  const stripePaymentLink = "https://buy.stripe.com/VOTRE_LIEN_ICI";   // <--- À MODIFIER ICI
+
+  document.getElementById('stripe-button')?.addEventListener('click', () => {
+    window.open(stripePaymentLink, '_blank');
+  });
+</script>
+</body>
+</html>
