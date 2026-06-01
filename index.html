@@ -320,7 +320,7 @@
       <a href="#">Accueil</a>
       <a href="#services">Services</a>
       <a href="#lead">Ressources</a>
-      <button class="btn-outline-light" onclick="alert('📩 Contact : hello@basemarketing.io')">Contact</button>
+      <button class="btn-outline-light" onclick="alert('📩 Contact : contact@basemarketing.io')">Contact</button>
     </div>
   </div>
 </header>
@@ -379,8 +379,9 @@
   // ========================
   // 1. FORMULAIRE REEL (FORMSPREE)
   // ========================
-  // 🔧 REMPLACEZ "xeqkzvra" par votre ID Formspree personnel (voir https://formspree.io)
-  const FORMSPREE_ID = "xeqkzvra";   // À CONFIGURER AVEC VOTRE ID
+  // 🔧 CONFIGURATION : Remplacez "VOTRE_ID_FORMSPREE" par votre ID Formspree personnel
+  // Pour obtenir votre ID : https://formspree.io
+  const FORMSPREE_ID = "VOTRE_ID_FORMSPREE";   // ⚠️ À CONFIGURER AVEC VOTRE ID
   const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
   const leadForm = document.getElementById('lead-form');
@@ -389,6 +390,14 @@
   if (leadForm) {
     leadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      // Vérifier que l'ID Formspree est configuré
+      if (FORMSPREE_ID === "VOTRE_ID_FORMSPREE") {
+        feedback.innerHTML = "⚠️ Erreur de configuration : veuillez ajouter votre ID Formspree au code (ligne ~228)";
+        feedback.style.color = "#dc2626";
+        return;
+      }
+      
       const email = document.getElementById('lead-email').value;
       feedback.innerHTML = "⏳ Envoi en cours...";
       feedback.style.color = "#2563eb";
@@ -403,7 +412,7 @@
           feedback.style.color = "#16a34a";
           leadForm.reset();
         } else {
-          feedback.innerHTML = "❌ Erreur temporaire, contactez-nous directement à hello@basemarketing.io";
+          feedback.innerHTML = "❌ Erreur temporaire, contactez-nous directement à contact@basemarketing.io";
           feedback.style.color = "#dc2626";
         }
       } catch (err) {
@@ -416,12 +425,13 @@
   // ========================
   // 2. STRIPE (LIEN DE PAIEMENT)
   // ========================
-  // 🔧 REMPLACEZ par votre lien de paiement Stripe généré dans le dashboard
-  const stripePaymentLink = "https://buy.stripe.com/test_1234567890abcdef";   // À CONFIGURER AVEC VOTRE LIEN
+  // 🔧 CONFIGURATION : Remplacez "VOTRE_LIEN_STRIPE" par votre lien de paiement Stripe réel
+  // Pour obtenir votre lien : https://dashboard.stripe.com → Payment Links
+  const stripePaymentLink = "VOTRE_LIEN_STRIPE";   // ⚠️ À CONFIGURER AVEC VOTRE LIEN STRIPE RÉEL
 
   document.getElementById('stripe-button')?.addEventListener('click', () => {
-    if (stripePaymentLink.includes("test_") || stripePaymentLink.includes("VOTRE_LIEN")) {
-      alert("⚠️ Veuillez configurer votre lien Stripe dans le code (ligne ~228)");
+    if (stripePaymentLink === "VOTRE_LIEN_STRIPE" || stripePaymentLink.includes("test_")) {
+      alert("⚠️ Erreur de configuration :\n\n1. Allez sur https://dashboard.stripe.com\n2. Créez un Payment Link\n3. Collez le lien réel dans le code (ligne ~363)\n\nExemple : https://buy.stripe.com/7sI...");
       return;
     }
     window.open(stripePaymentLink, '_blank');
